@@ -22,8 +22,11 @@
         <TextBox x:Name="tbDate" HorizontalAlignment="Left" Margin="72,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
         <TextBox x:Name="tbTemperatureRecords" HorizontalAlignment="Left" Margin="142,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="548" Height="47"/>
         <Button x:Name="btnOpenFile" Content="Загрузить из файла" HorizontalAlignment="Left" Margin="14,194,0,0" VerticalAlignment="Top" Click="OpenFileBtn_OnClick"/>
-        <Button x:Name="btnFormReport" Content="Сформировать отчет" HorizontalAlignment="Center" Margin="0,219,0,0" VerticalAlignment="Top" Height="39" Click="FormReport"/>
+        <Button x:Name="btnFormReport" Content="Сформировать отчет" HorizontalAlignment="Left" Margin="264,214,0,0" VerticalAlignment="Top" Height="39" Click="FormReport"/>
         <DataGrid x:Name="ViolationsGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,335,0,10"/>
+        <TextBox x:Name="tbMaxTempSummary" HorizontalAlignment="Left" Margin="14,264,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="513" Height="21"/>
+        <TextBox x:Name="tbMinTempSummary" HorizontalAlignment="Left" Margin="14,290,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="513" Height="21"/>
+        <Button x:Name="btnSaveReport" Content="Сохранить отчет" HorizontalAlignment="Left" Margin="416,214,0,0" VerticalAlignment="Top" Height="39" Click="SaveReport"/>
 
 
     </Grid>

@@ -41,8 +41,9 @@ namespace TemperatureMonitoring.Core
                     Temps.Add(int.Parse(temp));
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                throw;
             }
             TransportingStartTime = transportingStartTime;
         }
@@ -107,6 +108,12 @@ namespace TemperatureMonitoring.Core
             RequiredTemp = requiredTemp;
             FixedTemp = fixedTemp;
             Difference = FixedTemp - RequiredTemp;
+        }
+
+        public override string ToString()
+        {
+            return $"Время: {Date} Требуемая температура: {RequiredTemp} " +
+                $"Зафиксированная температура: {FixedTemp} Разница: {Difference}";
         }
     }
 
