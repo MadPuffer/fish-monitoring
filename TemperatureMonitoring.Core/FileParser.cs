@@ -8,9 +8,9 @@ namespace TemperatureMonitoring.Core
 {
     public class FileParser : IFishDataParser
     {
-        public static FishData ParseFishData(string? path)
+        public static FishTransportingData ParseFishData(string? path)
         {
-            FishData fishData = new FishData();
+            FishTransportingData fishData = new FishTransportingData();
             List<int> temps = new List<int>();
             DateTime date;
             try
