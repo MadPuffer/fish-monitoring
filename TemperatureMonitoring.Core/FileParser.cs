@@ -8,25 +8,29 @@ namespace TemperatureMonitoring.Core
 {
     public class FileParser : IFishDataParser
     {
-        public static void ParseFishData(string? path)
+        public static FishData ParseFishData(string? path)
         {
+            FishData fishData = new FishData();
             List<int> temps = new List<int>();
             DateTime date;
             try
             {
                 using (StreamReader sr = new StreamReader(path))
                 {
-                    date = DateTime.Parse(sr.ReadLine()); 
+                    date = DateTime.Parse(sr.ReadLine());
+                    fishData.date = date;
                     foreach (string temp in sr.ReadLine().Split())
                     {
                         temps.Add(int.Parse(temp));
                     }
+                    fishData.temps = temps;
                 }
             }
             catch (Exception ex)
             {
 
             }
+            return fishData;
         }
     }
 }

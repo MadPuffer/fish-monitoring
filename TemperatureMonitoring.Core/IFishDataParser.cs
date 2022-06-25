@@ -8,6 +8,9 @@ namespace TemperatureMonitoring.Core
 {
     public interface IFishDataParser
     {
-        public static void ParseFishData(string? path) { }
+        public static FishData ParseFishData(string? path)
+        {
+            return new FishData();
+        }
     }
 }
