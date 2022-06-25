@@ -25,6 +25,29 @@ namespace TemperatureMonitoring.Core
         }
 
         public Fish(int maxTemp, int maxTempDuration, int? minTemp, int? minTempDuration,
+            string name, string rawTemps, char separator, DateTime transportingStartTime)
+        {
+            MaxTemp = maxTemp;
+            MaxTempDuration = maxTempDuration;
+            MinTemp = minTemp;
+            MinTempDuration = minTempDuration;
+            Name = name;
+            Temps = new List<int>();
+            try
+            {
+
+                foreach (var temp in rawTemps.Split(separator))
+                {
+                    Temps.Add(int.Parse(temp));
+                }
+            }
+            catch
+            {
+            }
+            TransportingStartTime = transportingStartTime;
+        }
+
+        public Fish(int maxTemp, int maxTempDuration, int? minTemp, int? minTempDuration,
             string name)
         {
             MaxTemp = maxTemp;
@@ -34,7 +57,7 @@ namespace TemperatureMonitoring.Core
             Name = name;
         }
 
-        public FishConditionData CheckFishStatus()
+        public FishConditionData CheckFishCondition()
         {
             List<ViolationData> violations = new List<ViolationData>();
             int minTempViolation = 0;
@@ -54,7 +77,7 @@ namespace TemperatureMonitoring.Core
                 }
             }
 
-            return new FishConditionData(violations, minTempViolation, maxTempViolation);
+            return new FishConditionData(this, violations, minTempViolation, maxTempViolation);
         }
 
         public void LoadData(FishTransportingData data)
@@ -76,23 +99,27 @@ namespace TemperatureMonitoring.Core
         public DateTime Date { get; set; }
         public int RequiredTemp { get; set; }
         public int FixedTemp { get; set; }
+        public int Difference { get; set; }
 
         public ViolationData(DateTime date, int requiredTemp, int fixedTemp)
         {
             Date = date;
             RequiredTemp = requiredTemp;
             FixedTemp = fixedTemp;
+            Difference = FixedTemp - RequiredTemp;
         }
     }
 
     public struct FishConditionData
     {
-        List<ViolationData> Violations { get; set; }
-        int MinTempViolationsDuration { get; set; }
-        int MaxTempViolationsDuration { get; set; }
+        public Fish Fish { get; set; }
+        public List<ViolationData> Violations { get; set; }
+        public int MinTempViolationsDuration { get; set; }
+        public int MaxTempViolationsDuration { get; set; }
 
-        public FishConditionData(List<ViolationData> violations, int minTempViolations, int maxTempViolations)
+        public FishConditionData(Fish fish, List<ViolationData> violations, int minTempViolations, int maxTempViolations)
         {
+            Fish = fish;
             Violations = violations;
             MinTempViolationsDuration = minTempViolations;
             MaxTempViolationsDuration = maxTempViolations;

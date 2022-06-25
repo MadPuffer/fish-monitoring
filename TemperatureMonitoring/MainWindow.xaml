@@ -5,9 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TemperatureMonitoring"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        <DataGrid d:ItemsSource="{d:SampleData ItemCount=5}"/>
+        Title="MainWindow" Height="950" Width="800">
+    <Grid Margin="0,0,0,-6">
+        <TextBox x:Name="tbFishName" HorizontalAlignment="Left" Margin="82,14,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Вид рыбы:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Label Content="Макс. t:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbMaxTemp" HorizontalAlignment="Left" Margin="82,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Макс. продолжительность (в мин):" HorizontalAlignment="Left" Margin="224,41,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbMaxTempDuration" HorizontalAlignment="Left" Margin="429,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Макс. продолжительность (в мин):" HorizontalAlignment="Left" Margin="224,77,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbMinTempDuration" HorizontalAlignment="Left" Margin="429,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="tbMinTemp" HorizontalAlignment="Left" Margin="82,81,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Мин. t:" HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top"/>
+        <Label Content="Дата:" HorizontalAlignment="Left" Margin="14,132,0,0" VerticalAlignment="Top"/>
+        <Label Content="Записи температур" HorizontalAlignment="Left" Margin="14,163,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="tbDate" HorizontalAlignment="Left" Margin="72,140,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130"/>
+        <TextBox x:Name="tbTemperatureRecords" HorizontalAlignment="Left" Margin="142,167,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="548" Height="47"/>
+        <Button x:Name="btnOpenFile" Content="Загрузить из файла" HorizontalAlignment="Left" Margin="14,194,0,0" VerticalAlignment="Top" Click="OpenFileBtn_OnClick"/>
+        <Button x:Name="btnFormReport" Content="Сформировать отчет" HorizontalAlignment="Center" Margin="0,219,0,0" VerticalAlignment="Top" Height="39" Click="FormReport"/>
+        <DataGrid x:Name="ViolationsGrid" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,335,0,10"/>
+
 
     </Grid>
 </Window>
